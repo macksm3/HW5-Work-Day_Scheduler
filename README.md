@@ -12,5 +12,6 @@ added fontawesome icon for save button.
 
 addeded local storage ans everything is working but not very DRY
 
+added daySchedule array to hold all 9 text area descriptions in single element
 
 

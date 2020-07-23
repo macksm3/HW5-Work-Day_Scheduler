@@ -2,7 +2,7 @@
 // document ready 
 $(function() {
 
-  // global variables
+  // hour block text areas
   const hour9 = $("#hour-9");
   const hour10 = $("#hour-10");
   const hour11 = $("#hour-11");
@@ -12,19 +12,19 @@ $(function() {
   const hour15 = $("#hour-15");
   const hour16 = $("#hour-16");
   const hour17 = $("#hour-17");
+  let scheduleItem = $(".description");
   
   let currentHour = 0;
-  let hour9Description = "";
-  let hour10Description = "";
-  let hour11Description = "";
-  let hour12Description = "";
-  let hour13Description = "";
-  let hour14Description = "";
-  let hour15Description = "";
-  let hour16Description = "";
-  let hour17Description = "";
-  let scheduleItem = $(".description");
-  let daySchedule = ["9","10","11","12","13","14","15","16","17"];
+  // let hour9Description = "";
+  // let hour10Description = "";
+  // let hour11Description = "";
+  // let hour12Description = "";
+  // let hour13Description = "";
+  // let hour14Description = "";
+  // let hour15Description = "";
+  // let hour16Description = "";
+  // let hour17Description = "";
+  let daySchedule = [];
 
   // day/date at top of page 
   $("#currentDay").text(moment().format("dddd, MMMM Do"));
@@ -171,25 +171,29 @@ $(function() {
   // text entry 
 
   function renderTodos() {
-    console.log(`render stored data ${hour9Description}`);
-    $(hour9).text(hour9Description);
-    console.log(`render stored data ${hour10Description}`);
-    $(hour10).text(hour10Description);
-    console.log(`render stored data ${hour11Description}`);
-    $(hour11).text(hour11Description);
-    console.log(`render stored data ${hour12Description}`);
-    $(hour12).text(hour12Description);
-    console.log(`render stored data ${hour13Description}`);
-    $(hour13).text(hour13Description);
-    console.log(`render stored data ${hour14Description}`);
-    $(hour14).text(hour14Description);
-    console.log(`render stored data ${hour15Description}`);
-    $(hour15).text(hour15Description);
-    console.log(`render stored data ${hour16Description}`);
-    $(hour16).text(hour16Description);
-    console.log(`render stored data ${hour17Description}`);
-    $(hour17).text(hour17Description);
-
+    console.log(`render stored data ${daySchedule[0]}`);
+    $(hour9).text(daySchedule[0]);
+    // console.log(`render stored data ${hour9Description}`);
+    // $(hour9).text(hour9Description);
+    console.log(`render stored data ${daySchedule[1]}`);
+    $(hour10).text(daySchedule[1]);
+    console.log(`render stored data ${daySchedule[2]}`);
+    $(hour11).text(daySchedule[2]);
+    console.log(`render stored data ${daySchedule[3]}`);
+    $(hour12).text(daySchedule[3]);
+    console.log(`render stored data ${daySchedule[4]}`);
+    $(hour13).text(daySchedule[4]);
+    console.log(`render stored data ${daySchedule[5]}`);
+    $(hour14).text(daySchedule[5]);
+    console.log(`render stored data ${daySchedule[6]}`);
+    $(hour15).text(daySchedule[6]);
+    console.log(`render stored data ${daySchedule[7]}`);
+    $(hour16).text(daySchedule[7]);
+    console.log(`render stored data ${daySchedule[8]}`);
+    $(hour17).text(daySchedule[8]);
+    // console.log(`render stored data ${hour17Description}`);
+    // $(hour17).text(hour17Description);
+    
   }
 
   function init() {
@@ -198,39 +202,39 @@ $(function() {
     let storedHour9 = JSON.parse(localStorage.getItem("block9Store"));
     console.log(storedHour9);
     // If description retrieved from localStorage, update the html
-    if (storedHour9 !== null) {hour9Description = storedHour9;}
+    if (storedHour9 !== null) {daySchedule[0] = storedHour9;}
 
     let storedHour10 = JSON.parse(localStorage.getItem("block10Store"));
     console.log(storedHour10);
-    if (storedHour10 !== null) {hour10Description = storedHour10;}
+    if (storedHour10 !== null) {daySchedule[1] = storedHour10;}
 
     let storedHour11 = JSON.parse(localStorage.getItem("block11Store"));
     console.log(storedHour11);
-    if (storedHour11 !== null) {hour11Description = storedHour11;}
+    if (storedHour11 !== null) {daySchedule[2] = storedHour11;}
 
     let storedHour12 = JSON.parse(localStorage.getItem("block12Store"));
     console.log(storedHour12);
-    if (storedHour12 !== null) {hour12Description = storedHour12;}
+    if (storedHour12 !== null) {daySchedule[3] = storedHour12;}
 
     let storedHour13 = JSON.parse(localStorage.getItem("block13Store"));
     console.log(storedHour13);
-    if (storedHour13 !== null) {hour13Description = storedHour13;}
+    if (storedHour13 !== null) {daySchedule[4] = storedHour13;}
 
     let storedHour14 = JSON.parse(localStorage.getItem("block14Store"));
     console.log(storedHour14);
-    if (storedHour14 !== null) {hour14Description = storedHour14;}
+    if (storedHour14 !== null) {daySchedule[5] = storedHour14;}
 
     let storedHour15 = JSON.parse(localStorage.getItem("block15Store"));
     console.log(storedHour15);
-    if (storedHour15 !== null) {hour15Description = storedHour15;}
+    if (storedHour15 !== null) {daySchedule[6] = storedHour15;}
 
     let storedHour16 = JSON.parse(localStorage.getItem("block16Store"));
     console.log(storedHour16);
-    if (storedHour16 !== null) {hour16Description = storedHour16;}
+    if (storedHour16 !== null) {daySchedule[7] = storedHour16;}
 
     let storedHour17 = JSON.parse(localStorage.getItem("block17Store"));
     console.log(storedHour17);
-    if (storedHour17 !== null) {hour17Description = storedHour17;}
+    if (storedHour17 !== null) {daySchedule[8] = storedHour17;}
 
     // Render todos to the DOM
     renderTodos();
@@ -257,67 +261,67 @@ $(function() {
     switch (btnSaveNum) {
       case 9:
         // send hour9 description to local storage
-        hour9Description = $(hour9).val().trim();
-        console.log(`hour 9 details ${hour9Description}`);
+        daySchedule[0] = $(hour9).val().trim();
+        console.log(`hour 9 details ${daySchedule[0]}`);
         // Stringify and set description in localStorage 
-        localStorage.setItem("block9Store", JSON.stringify(hour9Description));
+        localStorage.setItem("block9Store", JSON.stringify(daySchedule[0]));
        break;
       case 10:
         console.log($(hour10).val());
         // send hour10 description to local storage
-        hour10Description = $(hour10).val().trim();
-        console.log(`hour 10 details ${hour10Description}`);
+        daySchedule[1] = $(hour10).val().trim();
+        console.log(`hour 10 details ${daySchedule[1]}`);
         // Stringify and set description in localStorage 
-        localStorage.setItem("block10Store", JSON.stringify(hour10Description));
+        localStorage.setItem("block10Store", JSON.stringify(daySchedule[1]));
         break;
       case 11:
         // send hour11 description to local storage
         console.log($(hour11).val());
-        hour11Description = $(hour11).val().trim();
-        console.log(`hour 11 details ${hour11Description}`);
-        localStorage.setItem("block11Store", JSON.stringify(hour11Description));
+        daySchedule[2] = $(hour11).val().trim();
+        console.log(`hour 11 details ${daySchedule[2]}`);
+        localStorage.setItem("block11Store", JSON.stringify(daySchedule[2]));
         break;
       case 12:
         console.log($(hour12).val());
         // send hour12 description to local storage
-        hour12Description = $(hour12).val().trim();
-        console.log(`hour 12 details ${hour12Description}`);
-        localStorage.setItem("block12Store", JSON.stringify(hour12Description));
+        daySchedule[3] = $(hour12).val().trim();
+        console.log(`hour 12 details ${daySchedule[3]}`);
+        localStorage.setItem("block12Store", JSON.stringify(daySchedule[3]));
         break;
       case 13:
         console.log($(hour13).val());
         // send hour13 description to local storage
-        hour13Description = $(hour13).val().trim();
-        console.log(`hour 13 details ${hour13Description}`);
-        localStorage.setItem("block13Store", JSON.stringify(hour13Description));
+        daySchedule[4] = $(hour13).val().trim();
+        console.log(`hour 13 details ${daySchedule[4]}`);
+        localStorage.setItem("block13Store", JSON.stringify(daySchedule[4]));
         break;
       case 14:
         console.log($(hour14).val());
         // send hour14 description to local storage
-        hour14Description = $(hour14).val().trim();
-        console.log(`hour 14 details ${hour14Description}`);
-        localStorage.setItem("block14Store", JSON.stringify(hour14Description));
+        daySchedule[5] = $(hour14).val().trim();
+        console.log(`hour 14 details ${daySchedule[5]}`);
+        localStorage.setItem("block14Store", JSON.stringify(daySchedule[5]));
         break;
       case 15:
         console.log($(hour15).val());
         // send hour15 description to local storage
-        hour15Description = $(hour15).val().trim();
-        console.log(`hour 15 details ${hour15Description}`);
-        localStorage.setItem("block15Store", JSON.stringify(hour15Description));
+        daySchedule[6] = $(hour15).val().trim();
+        console.log(`hour 15 details ${daySchedule[6]}`);
+        localStorage.setItem("block15Store", JSON.stringify(daySchedule[6]));
         break;
       case 16:
         console.log($(hour16).val());
         // send hour16 description to local storage
-        hour16Description = $(hour16).val().trim();
-        console.log(`hour 16 details ${hour16Description}`);
-        localStorage.setItem("block16Store", JSON.stringify(hour16Description));
+        daySchedule[7] = $(hour16).val().trim();
+        console.log(`hour 16 details ${daySchedule[7]}`);
+        localStorage.setItem("block16Store", JSON.stringify(daySchedule[7]));
         break;
       case 17:
         console.log($(hour17).val());
         // send hour17 description to local storage
-        hour17Description = $(hour17).val().trim();
-        console.log(`hour 17 details ${hour17Description}`);
-        localStorage.setItem("block17Store", JSON.stringify(hour17Description));
+        daySchedule[8] = $(hour17).val().trim();
+        console.log(`hour 17 details ${daySchedule[8]}`);
+        localStorage.setItem("block17Store", JSON.stringify(daySchedule[8]));
         break;
             
       default:
