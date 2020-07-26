@@ -36,8 +36,9 @@ $(function() {
     currentHour = parseInt(now.format("H"));
     // console.log(currentHour);
     $(clock).text(timeDisplay);  
-    
     // set hour block colors
+    // foreach  #time-block .row <textarea> [index] ,set color by IsBefore, IsSame, IsAfter
+    
     if (currentHour === 9) {
       $(hour9).removeClass("past");
       $(hour9).removeClass("future");
@@ -172,12 +173,14 @@ $(function() {
 
   function renderTodos() {
     console.log(`render stored data ${daySchedule[0]}`);
-    $(hour9).text(daySchedule[0]);
+    // using DOM structure, create array of #time-block .row <textarea> [index]
+    // foreach item in above array, set = to matching ${daySchedule[i]} array
+
     // console.log(`render stored data ${hour9Description}`);
     // $(hour9).text(hour9Description);
+    $(hour9).text(daySchedule[0]);
     console.log(`render stored data ${daySchedule[1]}`);
     $(hour10).text(daySchedule[1]);
-
     console.log(`render stored data ${daySchedule[2]}`);
     $(hour11).text(daySchedule[2]);
     console.log(`render stored data ${daySchedule[3]}`);
@@ -198,16 +201,19 @@ $(function() {
   }
 
   function init() {
+    // this should be a foreach of ${daySchedule[i]}
+
+   let index = parseInt($(hour9).attr("name"));  // should use #time-block .row <textarea> [index]
+    console.log(`name value ${index}`);
+
     // Get stored description from localStorage
     // Parsing the JSON string to an object
     let storedHour9 = JSON.parse(localStorage.getItem("block9Store"));
     console.log(storedHour9);
     // If description retrieved from localStorage, update the html
     if (storedHour9 !== null) {daySchedule[0] = storedHour9;}
-    let index = parseInt($(hour9).attr("name"));
-    console.log(`name value ${index}`);
 
-    let storedHour10 = JSON.parse(localStorage.getItem("block10Store"));
+     let storedHour10 = JSON.parse(localStorage.getItem("block10Store"));
     console.log(storedHour10);
     if (storedHour10 !== null) {daySchedule[1] = storedHour10;}
 
@@ -258,9 +264,14 @@ $(function() {
   //save button
   $(".saveBtn").on("click", function() {
     // use this??
+    // for (this.)  #time-block .row <button> , move value to matching ${daySchedule[i]}  
+    // or put another way, set value of ${daySchedule[i]} =  #time-block .row <textarea> [i]  
+
     // console.log(this.name + " clicked");
-    const btnSaveNum = parseInt(this.name);
+    const btnSaveNum = parseInt(this.name);  // use DOM structure to get this index
+
     console.log(`Save Button Number: ${btnSaveNum}`);
+    // switch case here is not the best solution
     switch (btnSaveNum) {
       case 9:
         // send hour9 description to local storage
