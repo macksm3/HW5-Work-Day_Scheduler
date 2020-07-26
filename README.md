@@ -14,4 +14,7 @@ addeded local storage ans everything is working but not very DRY
 
 added daySchedule array to hold all 9 text area descriptions in single element
 
+having difficulty with the numbering of the text elements, I know it has to reference the parent element of the DOM, but stuck on how to declare that reference in the code 
+
+
 

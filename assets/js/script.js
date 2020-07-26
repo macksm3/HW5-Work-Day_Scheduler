@@ -177,6 +177,7 @@ $(function() {
     // $(hour9).text(hour9Description);
     console.log(`render stored data ${daySchedule[1]}`);
     $(hour10).text(daySchedule[1]);
+
     console.log(`render stored data ${daySchedule[2]}`);
     $(hour11).text(daySchedule[2]);
     console.log(`render stored data ${daySchedule[3]}`);
@@ -203,6 +204,8 @@ $(function() {
     console.log(storedHour9);
     // If description retrieved from localStorage, update the html
     if (storedHour9 !== null) {daySchedule[0] = storedHour9;}
+    let index = parseInt($(hour9).attr("name"));
+    console.log(`name value ${index}`);
 
     let storedHour10 = JSON.parse(localStorage.getItem("block10Store"));
     console.log(storedHour10);
